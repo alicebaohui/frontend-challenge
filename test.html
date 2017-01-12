@@ -1,0 +1,51 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>Test of cloneNode Method</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 1.26" />
+	<style type="text/css">
+		.me{
+			position:absolute;
+			background:yellow;
+			width:50px;
+			height:50px;
+			top:50px;
+		}
+	</style>	
+	<script>
+		window.onload = function(){
+			var box = document.getElementsByClassName('me')[0];
+			function moveIt(ev){
+				var cloned = box.cloneNode(true);
+				box.parentNode.appendChild(cloned);
+				var x=ev.clientX;
+				var y=ev.clientY;
+				box.style.left=x+20+'px';
+				box.style.top=y+20+'px';
+				if(parseInt(box.style.left) > (screen.width-30) || parseInt(box.style.top) > (screen.heigt-30)) 
+				{
+					box.style.left = 0;
+					box.style.top = 0;
+				}
+				changeStyle(box);
+				
+			}
+			function changeStyle(box) {
+					box.style.background = "pink";	
+			}
+			box.style.left = '50px';
+			box.onclick = moveIt;
+			
+        }
+    </script>
+</head>
+
+<body>
+	<div class="me"></div>
+</body>
+
+</html>
